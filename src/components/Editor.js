@@ -1,23 +1,34 @@
 import React from "react";
 
-const Editor = () => {
+const Editor = props => {
   return (
     <form className="editor_form">
-      <label className="editor_date">
+      <label htmlFor="date" className="editor_date">
         Fecha
-        <input type="date" />
+        <input
+          type="date"
+          id="date"
+          placeholder="21/04/2018"
+          data-field="date"
+          onChange={props.getDate}
+        />
       </label>
-      <label className="editor_state">
+      <label htmlFor="state" className="editor_state">
         Estado
-        <label>
-          :) <input type="checkbox" />
-        </label>
-        <label>
-          :( <input type="checkbox" />
-        </label>
+      </label>
+      <label htmlFor="happy-button">
+        <input id="happy-button" data-field="mood" type="radio" /> :)
+      </label>
+      <label htmlFor="sad-button">
+        <input id="sad-button" data-field="mood" type="radio" /> :(
       </label>
       <label className="editor_message">
-        Mensaje <input type="text" placeholder="¿Por qué es un buen día?" />
+        Mensaje{" "}
+        <input
+          type="text"
+          data-field="message"
+          placeholder="¿Por qué es un buen día?"
+        />
       </label>
       <button className="editor_button-save" type="submit">
         GUARDAR
