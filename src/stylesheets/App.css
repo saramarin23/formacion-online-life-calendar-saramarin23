@@ -63,6 +63,8 @@ input {
   color: #c4c4c4;
   margin-top: 5px;
   font-size: 14px;
+  text-align: center;
+  width: 30%;
 }
 
 .calendar_add {

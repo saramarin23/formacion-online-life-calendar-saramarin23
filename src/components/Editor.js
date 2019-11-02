@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Editor = props => {
   return (
@@ -33,7 +34,9 @@ const Editor = props => {
       <button className="editor_button-save" type="submit">
         GUARDAR
       </button>
-      <button className="editor_button-reset">Cancelar</button>
+      <Link to="/">
+        <button className="editor_button-reset">Cancelar</button>
+      </Link>
     </form>
   );
 };

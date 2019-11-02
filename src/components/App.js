@@ -2,6 +2,7 @@ import React from "react";
 import "../stylesheets/App.css";
 import Editor from "./Editor";
 import Calendar from "./Calendar";
+import { Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -31,10 +32,22 @@ class App extends React.Component {
     console.log(this.state.editMood);
     return (
       <div className="App">
-        <header className="App-header">
-          <Editor getDate={this.getDate} />
-          <Calendar />
-        </header>
+        {/* <header className="App-header"></header> */}
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return <Calendar />;
+            }}
+          />
+          <Route
+            path="/editor"
+            render={() => {
+              return <Editor getDate={this.getDate} />;
+            }}
+          />
+        </Switch>
       </div>
     );
   }
