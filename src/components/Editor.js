@@ -18,10 +18,24 @@ const Editor = props => {
         Estado
       </label>
       <label htmlFor="happy-button">
-        <input id="happy-button" data-field="mood" type="radio" /> :)
+        <input
+          id="happy-button"
+          data-field="mood"
+          type="radio"
+          value=":)"
+          onClick={props.getMood}
+        />{" "}
+        :)
       </label>
       <label htmlFor="sad-button">
-        <input id="sad-button" data-field="mood" type="radio" /> :(
+        <input
+          id="sad-button"
+          data-field="mood"
+          type="radio"
+          value=":("
+          onClick={props.getMood}
+        />{" "}
+        :(
       </label>
       <label className="editor_message">
         Mensaje{" "}
@@ -29,6 +43,7 @@ const Editor = props => {
           type="text"
           data-field="message"
           placeholder="¿Por qué es un buen día?"
+          onChange={props.getMessage}
         />
       </label>
       <button className="editor_button-save" type="submit">

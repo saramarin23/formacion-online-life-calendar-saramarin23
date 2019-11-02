@@ -9,27 +9,42 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      editMood: {
-        date: "",
-        mood: "",
-        message: ""
-      },
+      // editMood: {
+      date: "",
+      mood: "",
+      message: "",
+      // },
       Moods: []
     };
     this.getDate = this.getDate.bind(this);
+    this.getMood = this.getMood.bind(this);
+    this.getMessage = this.getMessage.bind(this);
   }
 
   getDate(e) {
     const section = e.target.getAttribute("data-field");
-    console.log(section);
-    const currentValue = e.target.value;
-    this.setState(prevState => {
-      return { editMood: [...prevState.editMood, { [section]: currentValue }] };
-    });
+    // console.log(section);
+    let targetValue = e.target.value;
+    // console.log(targetValue);
+    this.setState({ date: targetValue });
+  }
+
+  getMood(e) {
+    let targetValue = e.target.value;
+    this.setState({ mood: targetValue });
+    if (targetValue === ":(") {
+    } else {
+    }
+  }
+
+  getMessage(e) {
+    console.log(e.target.value);
+    let targetValue = e.currentTarget.value;
+    this.setState({ message: targetValue });
   }
 
   render() {
-    console.log(this.state.editMood);
+    console.log(this.state);
     return (
       <div className="App">
         {/* <header className="App-header"></header> */}
@@ -44,7 +59,13 @@ class App extends React.Component {
           <Route
             path="/editor"
             render={() => {
-              return <Editor getDate={this.getDate} />;
+              return (
+                <Editor
+                  getDate={this.getDate}
+                  getMood={this.getMood}
+                  getMessage={this.getMessage}
+                />
+              );
             }}
           />
         </Switch>
