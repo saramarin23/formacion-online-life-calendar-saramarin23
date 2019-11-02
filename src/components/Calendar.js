@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Calendar = () => {
+const Calendar = props => {
   return (
-    <Link to="/editor">
-      <button className="calendar_add">+</button>
-    </Link>
+    <div>
+      <Link to="/editor">
+        <button className="calendar_add">+</button>
+      </Link>
+      <div>
+        <p>{props.moods}</p>
+      </div>
+    </div>
   );
 };
 

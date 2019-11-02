@@ -14,11 +14,12 @@ class App extends React.Component {
       mood: "",
       message: "",
       // },
-      Moods: []
+      moods: []
     };
     this.getDate = this.getDate.bind(this);
     this.getMood = this.getMood.bind(this);
     this.getMessage = this.getMessage.bind(this);
+    this.submitData = this.submitData.bind(this);
   }
 
   getDate(e) {
@@ -31,7 +32,7 @@ class App extends React.Component {
 
   getMood(e) {
     let targetValue = e.target.value;
-    this.setState({ mood: targetValue });
+    this.setState({ ...this.state.editMood, mood: targetValue });
     if (targetValue === ":(") {
     } else {
     }
@@ -40,7 +41,11 @@ class App extends React.Component {
   getMessage(e) {
     console.log(e.target.value);
     let targetValue = e.currentTarget.value;
-    this.setState({ message: targetValue });
+    this.setState({ ...this.state.editMood, message: targetValue });
+  }
+
+  submitData() {
+    localStorage.setItem("Mood", JSON.stringify(this.state));
   }
 
   render() {
@@ -53,7 +58,7 @@ class App extends React.Component {
             exact
             path="/"
             render={() => {
-              return <Calendar />;
+              return <Calendar moods={this.state.moods} />;
             }}
           />
           <Route
@@ -64,6 +69,7 @@ class App extends React.Component {
                   getDate={this.getDate}
                   getMood={this.getMood}
                   getMessage={this.getMessage}
+                  submitData={this.submitData}
                 />
               );
             }}

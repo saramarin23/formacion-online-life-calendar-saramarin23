@@ -46,7 +46,11 @@ const Editor = props => {
           onChange={props.getMessage}
         />
       </label>
-      <button className="editor_button-save" type="submit">
+      <button
+        className="editor_button-save"
+        type="submit"
+        onClick={props.submitData}
+      >
         GUARDAR
       </button>
       <Link to="/">
