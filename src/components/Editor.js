@@ -23,6 +23,7 @@ const Editor = props => {
           data-field="mood"
           type="radio"
           value=":)"
+          name="face"
           onClick={props.getMood}
         />{" "}
         :)
@@ -33,6 +34,7 @@ const Editor = props => {
           data-field="mood"
           type="radio"
           value=":("
+          name="face"
           onClick={props.getMood}
         />{" "}
         :(
@@ -46,13 +48,15 @@ const Editor = props => {
           onChange={props.getMessage}
         />
       </label>
-      <button
-        className="editor_button-save"
-        type="submit"
-        onClick={props.submitData}
-      >
-        GUARDAR
-      </button>
+      <Link to="/">
+        <button
+          className="editor_button-save"
+          type="submit"
+          onClick={props.submitData}
+        >
+          GUARDAR
+        </button>
+      </Link>
       <Link to="/">
         <button className="editor_button-reset">Cancelar</button>
       </Link>

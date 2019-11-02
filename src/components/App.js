@@ -22,37 +22,63 @@ class App extends React.Component {
     this.submitData = this.submitData.bind(this);
   }
 
+  componentDidMount() {
+    const savedMoods = JSON.parse(localStorage.getItem("datesSaved"));
+    this.setState({
+      moods: savedMoods
+    });
+  }
+
   getDate(e) {
-    const section = e.target.getAttribute("data-field");
     // console.log(section);
     let targetValue = e.target.value;
-    // console.log(targetValue);
-    this.setState({ date: targetValue });
+    // this.setState({ date: targetValue });
+    this.setState(prevState => {
+      return {
+        date: targetValue
+      };
+    });
   }
 
   getMood(e) {
+    // const section = e.target.getAttribute("data-field");
     let targetValue = e.target.value;
-    this.setState({ ...this.state.editMood, mood: targetValue });
+    this.setState(prevState => {
+      return { mood: targetValue };
+    });
     if (targetValue === ":(") {
     } else {
     }
   }
 
   getMessage(e) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     let targetValue = e.currentTarget.value;
-    this.setState({ ...this.state.editMood, message: targetValue });
+    // this.setState({ ...this.state.editMood, message: targetValue });
+    this.setState(prevState => {
+      return { message: targetValue };
+    });
   }
 
   submitData() {
-    localStorage.setItem("Mood", JSON.stringify(this.state));
+    localStorage.setItem("datesSaved", JSON.stringify(this.state));
+    // let moods = [this.state.moods];
+    // let moods = [];
+    this.setState(prevState => {
+      return {
+        moods: [[this.state.date, this.state.mood, this.state.message]]
+      };
+    });
+    console.log(this.state.moods);
+    // for (let day in moods) {
+    // moods.push(moods);
+    // }
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.state.moods);
     return (
       <div className="App">
-        {/* <header className="App-header"></header> */}
         <Switch>
           <Route
             exact
